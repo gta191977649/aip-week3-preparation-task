@@ -61,9 +61,13 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
+	var _data = __webpack_require__(/*! ./components/data */ 187);
+	
+	var _data2 = _interopRequireDefault(_data);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, { data: _data2.default.data }), document.getElementById('root'));
 
 /***/ }),
 /* 1 */
@@ -22412,6 +22416,10 @@
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
+	var _DataPreview = __webpack_require__(/*! ./DataPreview */ 186);
+	
+	var _DataPreview2 = _interopRequireDefault(_DataPreview);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22440,6 +22448,12 @@
 	    }
 	
 	    _createClass(App, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {}
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {}
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -22447,7 +22461,13 @@
 	                { className: 'App' },
 	                _react2.default.createElement(_Header2.default, { msg: this.state.pageHeader }),
 	                _react2.default.createElement('p', null),
-	                _react2.default.createElement('div', null)
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    this.props.data.map(function (element) {
+	                        return _react2.default.createElement(_DataPreview2.default, { data: element, key: element.id });
+	                    })
+	                )
 	            );
 	        }
 	    }]);
@@ -22487,6 +22507,47 @@
 	};
 	
 	exports.default = Header;
+
+/***/ }),
+/* 186 */
+/*!***************************************!*\
+  !*** ./src/components/DataPreview.js ***!
+  \***************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var DataPreview = function DataPreview(_ref) {
+	    var data = _ref.data;
+	    return _react2.default.createElement(
+	        "div",
+	        { className: "dataPreview" },
+	        data.id,
+	        ",",
+	        data.name
+	    );
+	};
+	
+	exports.default = DataPreview;
+
+/***/ }),
+/* 187 */
+/*!**********************************!*\
+  !*** ./src/components/data.json ***!
+  \**********************************/
+/***/ (function(module, exports) {
+
+	module.exports = {"data":[{"id":1,"name":"hello world"},{"id":2,"name":"Hello 22233"}]}
 
 /***/ })
 /******/ ]);
