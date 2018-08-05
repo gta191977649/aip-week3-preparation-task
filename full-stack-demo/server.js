@@ -3,8 +3,9 @@ import apiRouter from './api'
 import express from 'express'
 const server = express()
 
+server.set('view engine','ejs')
 server.get('/',(req,res) => {
-    res.send("Hello world index")
+    res.render('index');
 });
 server.get('/500',(req,res) => {
     res.send("Hello world 500~")
