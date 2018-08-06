@@ -61,13 +61,9 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _data = __webpack_require__(/*! ./components/data */ 187);
-	
-	var _data2 = _interopRequireDefault(_data);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, { data: _data2.default.data }), document.getElementById('root'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
 /***/ }),
 /* 1 */
@@ -22420,6 +22416,10 @@
 	
 	var _DataPreview2 = _interopRequireDefault(_DataPreview);
 	
+	var _data = __webpack_require__(/*! ../data */ 188);
+	
+	var _data2 = _interopRequireDefault(_data);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22443,13 +22443,18 @@
 	        }
 	
 	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-	            pageHeader: 'aaa'
+	            pageHeader: 'aaa',
+	            data: []
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
 	
 	    _createClass(App, [{
 	        key: 'componentDidMount',
-	        value: function componentDidMount() {}
+	        value: function componentDidMount() {
+	            this.setState({
+	                data: _data2.default.data
+	            });
+	        }
 	    }, {
 	        key: 'componentWillUnmount',
 	        value: function componentWillUnmount() {}
@@ -22464,7 +22469,7 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    null,
-	                    this.props.data.map(function (element) {
+	                    this.state.data.map(function (element) {
 	                        return _react2.default.createElement(_DataPreview2.default, { data: element, key: element.id });
 	                    })
 	                )
@@ -22541,10 +22546,11 @@
 	exports.default = DataPreview;
 
 /***/ }),
-/* 187 */
-/*!**********************************!*\
-  !*** ./src/components/data.json ***!
-  \**********************************/
+/* 187 */,
+/* 188 */
+/*!***********************!*\
+  !*** ./src/data.json ***!
+  \***********************/
 /***/ (function(module, exports) {
 
 	module.exports = {"data":[{"id":1,"name":"hello world"},{"id":2,"name":"Hello 22233"}]}

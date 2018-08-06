@@ -1,12 +1,17 @@
 import React from 'react'
 import Header from './Header'
 import DataPreview from './DataPreview'
+import JsonData from '../data'
 
 class App extends React.Component {
     state = {
-        pageHeader: 'aaa'
+        pageHeader: 'aaa',
+        data: []
     }
     componentDidMount() {
+        this.setState({
+            data: JsonData.data
+        })
     }
     componentWillUnmount () {
 
@@ -18,7 +23,7 @@ class App extends React.Component {
                 <p></p>
                 <div>
                     {
-                        this.props.data.map(
+                        this.state.data.map(
                             element => <DataPreview data={element} key={element.id}/>
                         )
                     }
