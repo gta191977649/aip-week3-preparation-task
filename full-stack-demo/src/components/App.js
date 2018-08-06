@@ -1,7 +1,8 @@
 import React from 'react'
+import axios from 'axios'
 import Header from './Header'
 import DataPreview from './DataPreview'
-import JsonData from '../data'
+
 
 class App extends React.Component {
     state = {
@@ -9,9 +10,15 @@ class App extends React.Component {
         data: []
     }
     componentDidMount() {
-        this.setState({
-            data: JsonData.data
+        // ajax
+        axios.get('/api/data')
+        .then(resp=> {
+            this.setState({
+                data: resp.data.data
+            })
         })
+        .catch(console.error)
+        
     }
     componentWillUnmount () {
 
