@@ -7,7 +7,14 @@ import DataPreview from './DataPreview'
 class App extends React.Component {
     state = {
         pageHeader: 'aaa',
-        data: []
+        data: [],
+        content: "Do you like javascript"
+    }
+    onYes(){
+       console.log("YES click")
+    }
+    onNO() {
+        console.log("no click")
     }
     componentDidMount() {
         // ajax
@@ -18,6 +25,8 @@ class App extends React.Component {
             })
         })
         .catch(console.error)
+
+
         
     }
     componentWillUnmount () {
@@ -26,16 +35,10 @@ class App extends React.Component {
     render() {
         return(
             <div className="App">
-                <Header msg={this.state.pageHeader}/>
-                <p></p>
-                <div>
-                    {
-                        this.state.data.map(
-                            element => <DataPreview data={element} key={element.id}/>
-                        )
-                    }
-                
-                </div>
+                <p>{this.state.content}</p>
+                <button onClick={this.onYes}>YES</button>
+                <button onClick={this.onNO}>NO</button>
+
             </div>
         )
     }
